@@ -1,32 +1,33 @@
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
-console.dir(queryString);
-console.dir(params);
+
+//const showLoaderDiv = document.querySelector(".loader");
+//const showNavigationDiv = document.querySelector("nav");
+//const shovMainDiv = document.querySelector("main");
+//const showFooter = document.querySelector("footer");
 
 let id;
 
 if (params.has("id")) {
     id = params.get("id");
-    console.log(id);
 } else {
     document.location.href = "index.html";
 }
 
 const baseUrl = "https://rickandmortyapi.com/api/";
 const detailsUrl = `${baseUrl}character/${id}`
-console.dir(detailsUrl);
-//Eksempel: `https://rickandmortyapi.com/api/character/2`
 
 function handleResponse(response) {
-    console.log("Hallo");
-    //console.dir(response);
+
+    //showLoaderDiv.style.display = "block";
+    //showNavigationDiv.style.display = "none";
+    //shovMainDiv.style.display = "none";
+    //showFooter.style.display = "none";
+
     return response.json();
 }
 
 function handleDetails(json) {
-    console.dir(json);
-    console.log(json.id);
-
     const origin = [];
     const location = [];
 
@@ -36,7 +37,7 @@ function handleDetails(json) {
 
     let html = "";
 
-        html += `<div class="detail-container">
+    html += `<div class="detail-container">
     <img class="details-image" src="${json.image}" alt="${json.name}" />
     <div class="detail-details">
         <h1>${json.name}</h1>
@@ -51,7 +52,7 @@ function handleDetails(json) {
 };
 
 function handleError(error) {
-    console.log("Her gikk noe feil ...", error);
+    document.location.href = "error.html";
 }
 
 fetch(detailsUrl)

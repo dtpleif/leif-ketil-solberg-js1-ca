@@ -12,6 +12,8 @@ function handleCharacters(json) {
     const characterObjects = json.results;
     console.dir(characterObjects);
 
+    const characterTitle = document
+
     const resultContainer = document.querySelector(".results");
 
     let html = "";
@@ -45,8 +47,7 @@ function handleCharacters(json) {
 }
 
 function handleError(error) {
-    //document.location.href = "error.html";
-    console.log("Oops, her skjedde det en feil", error);
+    document.location.href = "error.html";
 }
 
 fetch(characterUrl)
